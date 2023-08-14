@@ -56,3 +56,7 @@
 <script src="home.js"></script>
 </body>
 </html>
+
+
+<!-- <input type="password" id="password" required pattern="^(?=.*[A-Z])(?=.*[0-9]{2,})(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,32}$"
+      title="Password must start with a capital letter, have at least two numbers, one special character, and be 8-32 characters long"> -->
