@@ -1,3 +1,8 @@
+<?php
+  require_once 'Includes\config.php';
+  require_once 'Includes\signupView.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,18 +42,24 @@
         <input required type="text" name="email" placeholder="Email">
         <input required type="password" name="password" placeholder="Password">
         <input required type="password" name="confirm" placeholder="Confirm Password">
+        <input required type="tel" name="phoneNumber" placeholder="Phone Number">
         <input required type="date" name="birthDate" placeholder="birth Date">
-        <button>Create Account</button>
+        <button type="submit" class="btnSignUP">Sign UP</button>
         <p class="opposite-btn2">Already have an account?</p>
       </form>
     </section>
+    <p class="formError"></p>
+
+    <?php
+    check_signup_errors();
+    ?>
       
     <!--  Sign In  -->
     <section class="section sign-in">
       <form action="">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
-        <button>Sign In</button>
+        <button type="submit" class="btnSignIn">Sign In</button>
         <p class="opposite-btn1">Don't have an account?</p>
       </form>
     </section>

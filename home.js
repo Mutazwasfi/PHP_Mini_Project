@@ -9,6 +9,8 @@ btn2 = document.querySelector('.wlcBtnLogIn');
 btn3 = document.querySelector('.opposite-btn1');
 btn4 = document.querySelector('.opposite-btn2');
 
+btnSignUP = document.querySelector('.btnSignUP');
+btnSignIn = document.querySelector('.btnSignIn');
 
 // Switches to 'Sign Up'
 btn1.addEventListener('click', () =>{
@@ -23,6 +25,10 @@ btn3.addEventListener('click', () => {
   signIn.style.display = 'none'; 
 });
 
+btnSignUP.addEventListener('click', (e) => {
+   e.preventDefault();
+});
+
 // Switches to 'Sign In'
 btn2.addEventListener('click', () =>{
   welcome.style.display = 'none'; 
@@ -34,6 +40,11 @@ btn4.addEventListener('click', () => {
   welcome.style.display = 'none';
   signUp.style.display = 'none';
   signIn.style.display = 'block';
+});
+
+
+btnSignIn.addEventListener('click', (e) => {
+  e.preventDefault();
 });
 
 
