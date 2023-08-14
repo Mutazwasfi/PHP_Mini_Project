@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-function get_username(object $pdo, string $fName, string $famName)
+function get_username(object $pdo, string $phoneNumber)
 {
-  $query = "SELECT fName, famName  FROM users WHERE fName = :fName , famName = :famName;";
+  $query = "SELECT fName, famName  FROM users WHERE phoneNumber = :phoneNumber;";
   $stmt = $pdo->prepare($query);
-  $stmt->bindparam(":fName" , $fName, ":famName", $famName);
-  $stmt->excute();
+  $stmt->bindparam(":phoneNumber" , $phoneNumber);
+  $stmt-> execute();
 
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
   return $result;
@@ -29,9 +29,9 @@ function set_user (
   string $email, string $pwd, string $confirmPwd, 
   string $phoneNumber, String $birthDate) {
 
-  $query = "INSERT INTO users WHERE (fName, mName , lName, famName, email, pwd, 
+  $query = "INSERT INTO users (fName, mName, lName, famName, email, pwd, 
   confirmPwd, phoneNumber, birthDate) VALUES (:fName, 
-  :mName , :lName, :famName, :email, :pwd, 
+  :mName, :lName, :famName, :email, :pwd, 
   :confirmPwd, :phoneNumber, :birthDate);";
   $stmt = $pdo->prepare($query);
 
@@ -46,7 +46,7 @@ function set_user (
   $stmt->bindParam(":lName", $lName);
   $stmt->bindParam(":famName", $famName);
   $stmt->bindParam(":email", $email);
-  $stmt->bindParam(":pwd", $$hashedPwd);
+  $stmt->bindParam(":pwd", $hashedPwd);
   $stmt->bindParam(":confirmPwd", $confirmPwd);
   $stmt->bindParam(":phoneNumber", $phoneNumber);
   $stmt->bindParam(":birthDate", $birthDate);

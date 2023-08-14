@@ -28,9 +28,9 @@ function is_email_invaild(string $email)
 
 
 // CHECKING IF THE USER EXISTS
-function is_username_taken(object $pdo, string $fName, string $famName)
+function is_username_taken(object $pdo, string $phoneNumber)
 {
-  if (get_username($pdo, $fName, $famName)){
+  if (get_username($pdo, $phoneNumber)){
     return true;
   } else {
     return false;
@@ -47,6 +47,7 @@ function is_email_registeried(object $pdo, string $email)
   }
 }
 
+// CREATING A USER
 function create_user (
   object $pdo, string $fName, string $mName,
   string $lName, string $famName, 

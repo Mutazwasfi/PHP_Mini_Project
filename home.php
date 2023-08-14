@@ -30,18 +30,17 @@
       <button class="wlcBtnLogIn">Log in</button>
     </div>
   </header>
-  
 
   <!--  Sign Up  -->
     <section class="section sign-up">
-      <form action="">
+      <form action="Includes\signup.php" method="post">
         <input required type="text" name="fName" placeholder="First Name">
         <input required type="text" name="mName" placeholder="Middle Name">
         <input required type="text" name="lName" placeholder="Last Name">
         <input required type="text" name="famName" placeholder="Family Name">
         <input required type="text" name="email" placeholder="Email">
-        <input required type="password" name="password" placeholder="Password">
-        <input required type="password" name="confirm" placeholder="Confirm Password">
+        <input required type="password" name="pwd" placeholder="Password">
+        <input required type="password" name="confirmPwd" placeholder="Confirm Password">
         <input required type="tel" name="phoneNumber" placeholder="Phone Number">
         <input required type="date" name="birthDate" placeholder="birth Date">
         <button type="submit" class="btnSignUP">Sign UP</button>
@@ -56,12 +55,31 @@
       
     <!--  Sign In  -->
     <section class="section sign-in">
-      <form action="">
+      <form action="Includes\login.php" method="post">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <button type="submit" class="btnSignIn">Sign In</button>
         <p class="opposite-btn1">Don't have an account?</p>
       </form>
+    </section>
+
+    <!--  Show Data -->
+    <section class="section Data">
+    <?php
+      include_once 'Includes\showUserData.php';
+      // Decode the data from the query parameter
+      $data = json_decode($_GET['data'], true);
+      foreach ($data as $row) {
+        echo "<div class='welcomeText'>";
+        echo "<h2> Welcome " . $row['id'] . "</h2>";
+      echo "<br>";
+        echo "<p>" . $row['fName'] . " " . $row['famName'] . "</p>";
+      echo "<br>";
+        echo "<p>" . $row['email'] . "</p>";
+      echo "</div>";
+        echo "<br>";
+      }
+      ?>
     </section>
 </div>
 <script src="home.js"></script>
@@ -70,4 +88,4 @@
 
 
 <!-- <input type="password" id="password" required pattern="^(?=.*[A-Z])(?=.*[0-9]{2,})(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,32}$"
-      title="Password must start with a capital letter, have at least two numbers, one special character, and be 8-32 characters long"> -->
+title="Password must start with a capital letter, have at least two numbers, one special character, and be 8-32 characters long"> -->

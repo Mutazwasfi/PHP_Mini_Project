@@ -25,9 +25,9 @@ btn3.addEventListener('click', () => {
   signIn.style.display = 'none'; 
 });
 
-btnSignUP.addEventListener('click', (e) => {
-   e.preventDefault();
-});
+// btnSignUP.addEventListener('click', (e) => {
+//    e.preventDefault();
+// });
 
 // Switches to 'Sign In'
 btn2.addEventListener('click', () =>{

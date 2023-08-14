@@ -1,7 +1,6 @@
 <?php
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-// $data=json_decode(file_get_contents("php://input"),true);
 
     // Get data from form
     $fName=$_POST['fName'];
@@ -26,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         require_once 'signupContr.php';
 
         // Error Handlers
-        $errors =[];
+        $errors = [];
 
         if (!is_input_empty($inputs)){
           $errors["empty_input"]="Fill in all the fields";
@@ -34,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         if (is_email_invaild($email)){
           $errors["invalid_email"]="Invalid email used";
         }
-        if (is_username_taken($pdo, $fName, $famName)) {
+        if (is_username_taken($pdo, $phoneNumber)) {
           $errors["username_taken"] = "Username_taken already registerd!";
         }
 
@@ -42,12 +41,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
           $errors["email_used"] = "Email already registerd!";
         }
 
-        require_once 'session.php';
+        require_once 'config.php';
 
         // IF USER ENTERED ANYTHING INVALID SEND BACK TO HOME
         if ($errors) {
             $_SESSION["errors_signup"] = $errors;
             header("location: ../home.php");
+            die();
         }
 
 
